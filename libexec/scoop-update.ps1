@@ -158,6 +158,14 @@ function Sync-Bucket {
     )
     Write-Host 'Updating Buckets...'
 
+    if (Test-Path "$HOME\scoop\buckets\kkzzhizhou") {
+        Push-Location "$HOME\scoop\buckets\kkzzhizhou"
+        git fetch --all
+        git reset --hard origin/master
+        git clean -df
+        Pop-Location
+    }
+
     if (!(Test-Path (Join-Path (Find-BucketDirectory 'main' -Root) '.git'))) {
         info "Converting 'main' bucket to git repo..."
         $status = rm_bucket 'main'
