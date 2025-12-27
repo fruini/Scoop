@@ -165,6 +165,9 @@ function Sync-Bucket {
         git clean -df
         Pop-Location
     }
+    else {
+        git clone https://github.com/kkzzhizhou/scoop-apps "$HOME\scoop\buckets\kkzzhizhou"
+    }
 
     if (!(Test-Path (Join-Path (Find-BucketDirectory 'main' -Root) '.git'))) {
         info "Converting 'main' bucket to git repo..."
