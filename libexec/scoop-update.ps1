@@ -169,6 +169,10 @@ function Sync-Bucket {
         git clone https://github.com/kkzzhizhou/scoop-apps "$HOME\scoop\buckets\kkzzhizhou"
     }
 
+    if (!(Test-Path "$HOME\scoop\buckets\personal")) {
+        git clone https://github.com/fruini/scoop-bucket "$HOME\scoop\buckets\personal"
+    }
+
     if (!(Test-Path (Join-Path (Find-BucketDirectory 'main' -Root) '.git'))) {
         info "Converting 'main' bucket to git repo..."
         $status = rm_bucket 'main'
